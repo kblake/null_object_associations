@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Karmen Blake"]
   spec.email         = ["dudeblake@gmail.com"]
   spec.summary       = %q{Handle associations in your null objects.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/kblake/null_object_associations"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
