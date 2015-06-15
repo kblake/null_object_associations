@@ -1,6 +1,6 @@
 # NullObjectAssociations
 
-A nice little addition to null objects. Especially nice for those used in Rails.
+Return empty arrays or nil for associations. A nice little addition to null objects. Especially nice for those used in Rails.
 
 ## Installation
 

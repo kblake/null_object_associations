@@ -9,6 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Karmen Blake"]
   spec.email         = ["dudeblake@gmail.com"]
   spec.summary       = %q{Handle associations in your null objects.}
+  spec.description   = %q{Return empty arrays or nil for associations.}
   spec.homepage      = "https://github.com/kblake/null_object_associations"
   spec.license       = "MIT"
 
