@@ -1,6 +1,6 @@
 # NullObjectAssociations
 
-TODO: Write a gem description
+A nice little addition to null objects. Especially nice for those used in Rails.
 
 ## Installation
 
@@ -20,7 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+class NullUser
+  include NullObjectAssociations
+
+  has_many                :friends
+  has_many                :cousins,  respond_to: [:pluck, :completed]
+  has_many                :cars,     respond_to: :any
+  has_and_belongs_to_many :accounts, respond_to: [:pluck, :completed]
+  has_one                 :house
+  belongs_to              :spouse
+end
+```
+
 
 ## Contributing
 
