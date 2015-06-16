@@ -43,9 +43,9 @@ module NullObjectAssociations
     def build_associations(actions)
       empty_array = []
 
-      empty_array.tap do |a|
+      empty_array.tap do |empty_arr|
         actions.each do |action|
-          empty_array.define_singleton_method(action) do
+          empty_arr.define_singleton_method(action) do
             []
           end
         end
