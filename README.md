@@ -25,7 +25,7 @@ class NullUser
   include NullObjectAssociations
 
   has_many                :friends
-  has_many                :cousins,  respond_to: [:pluck, :completed]
+  has_many                :cousins,  respond_to: [:pluck, :limit, :order, :completed]
   has_many                :cars,     respond_to: :any
   has_and_belongs_to_many :accounts, respond_to: [:pluck, :completed]
   has_one                 :house

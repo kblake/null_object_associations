@@ -1,11 +1,21 @@
-require "null_object_associations/version"
-
 module NullObjectAssociations
   def self.included base
     base.send :extend, SingletonMethods
   end
 
   module SingletonMethods
+    Object.const_set("NullObjectForArgument", Class.new do
+      def method_missing(to_be_called, *args)
+        if args.empty?
+          []
+        else
+          nil
+        end
+      end
+
+      def empty?; true; end
+    end)
+
     def has_many(name, actions = {})
       if actions[:respond_to] == :any
         associations = [] 
@@ -42,10 +52,16 @@ module NullObjectAssociations
 
     def build_associations(actions)
       empty_array = []
+      noa = NullObjectForArgument.new
+      methods_with_arguments = [:pluck, :limit, :order]
 
       empty_array.tap do |empty_arr|
         actions.each do |action|
-          empty_arr.define_singleton_method(action) do
+          empty_arr.define_singleton_method(action) do |*args|
+            if methods_with_arguments.include?(action) && !args.empty?
+              return noa
+            end
+
             []
           end
         end

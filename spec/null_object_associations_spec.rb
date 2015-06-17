@@ -6,7 +6,7 @@ describe NullObjectAssociations do
     include NullObjectAssociations
 
     has_many                :foos
-    has_many                :bars, respond_to: [:pluck, :completed]
+    has_many                :bars, respond_to: [:pluck, :limit, :order, :completed]
     has_many                :blahs, respond_to: :any
     has_and_belongs_to_many :zibs, respond_to: [:pluck, :completed]
     has_one                 :baz
@@ -26,8 +26,16 @@ describe NullObjectAssociations do
           null_object.bars.must_be_empty
         end
 
-        it "#pluck" do
-          null_object.bars.pluck.must_be_empty
+        it "#pluck with argument" do
+          null_object.bars.pluck(:plan).must_be_empty
+        end
+
+        it "#limit with argument" do
+          null_object.bars.limit(10).must_be_empty
+        end
+
+        it "#order with argument" do
+          null_object.bars.order('desc').must_be_empty
         end
 
         it "#completed" do
